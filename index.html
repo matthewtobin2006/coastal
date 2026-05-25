@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coastal — Cape Cod, Massachusetts</title>
+<title>High Tide — Cape Cod, Massachusetts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -64,7 +64,8 @@
   .btn-secondary { font-family: var(--font-condensed); font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bleached); background: transparent; border: 1px solid rgba(245,243,238,0.4); padding: 16px 36px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
   .btn-secondary:hover { border-color: var(--bleached); }
   .hero-right { position: relative; overflow: hidden; }
-  .hero-right img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+  /* hero.jpg goes here */
+  .hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 
   /* TAGLINE STRIP */
   .tagline-strip { background: var(--deep-ocean); padding: 14px 0; overflow: hidden; border-top: 1px solid rgba(133,183,235,0.2); }
@@ -81,7 +82,8 @@
   .hero-product { padding: 120px 80px; background: var(--bleached); }
   .hero-product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 64px; }
   .product-feature-img { position: relative; overflow: hidden; background: var(--salt-wash); }
-  .product-feature-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* henley-ss.jpg goes here */
+  .product-feature-img img { width: 100%; display: block; object-fit: cover; }
   .reversible-badge { position: absolute; top: 20px; right: 20px; background: var(--deep-ocean); color: var(--bleached); font-family: var(--font-condensed); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 6px 14px; }
   .product-feature-name { font-family: var(--font-display); font-size: 36px; font-weight: 600; color: var(--deep-ocean); line-height: 1.2; margin-bottom: 20px; }
   .product-feature-desc { font-size: 16px; font-weight: 300; line-height: 1.8; color: #444441; margin-bottom: 32px; }
@@ -93,15 +95,16 @@
 
   /* COLLECTION */
   .collection { padding: 80px; background: white; }
-  .collection-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; }
-  .collection-filters { display: flex; gap: 8px; }
+  .collection-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 20px; }
+  .collection-filters { display: flex; gap: 8px; flex-wrap: wrap; }
   .filter-btn { font-family: var(--font-condensed); font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 20px; border: 1px solid var(--sand); background: transparent; color: var(--driftwood); cursor: pointer; transition: all 0.2s; }
   .filter-btn:hover, .filter-btn.active { background: var(--deep-ocean); border-color: var(--deep-ocean); color: white; }
   .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; }
   .product-card { cursor: pointer; }
   .product-card-img { background: var(--bleached); aspect-ratio: 3/4; margin-bottom: 16px; overflow: hidden; position: relative; }
-  .product-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
-  .product-card:hover .product-card-img img { transform: scale(1.03); }
+  /* each product image goes inside .product-card-img */
+  .product-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.4s ease; display: block; }
+  .product-card:hover .product-card-img img { transform: scale(1.04); }
   .new-badge { position: absolute; top: 12px; left: 12px; background: var(--deep-ocean); color: white; font-family: var(--font-condensed); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; z-index: 2; }
   .hero-badge { position: absolute; top: 12px; left: 12px; background: var(--harbor-blue); color: white; font-family: var(--font-condensed); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; z-index: 2; }
   .product-card-swatches { display: flex; gap: 6px; margin-bottom: 8px; }
@@ -119,13 +122,14 @@
   .flip-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .flip-side { background: rgba(255,255,255,0.06); border: 1px solid rgba(133,183,235,0.2); padding: 24px; text-align: center; }
   .flip-side-label { font-family: var(--font-condensed); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sea-mist); margin-bottom: 16px; }
-  .flip-side img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; margin-bottom: 16px; }
+  /* henley-ss.jpg and henley-ls.jpg go here for the two flip sides */
+  .flip-side img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center top; display: block; margin-bottom: 16px; }
   .flip-side-desc { font-size: 12px; font-weight: 300; color: rgba(133,183,235,0.7); line-height: 1.6; }
 
   /* MATERIALS */
   .materials { padding: 100px 80px; background: var(--bleached); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  /* materials.jpg goes here */
   .materials img { width: 100%; display: block; }
-  .materials-copy .section-title { margin-bottom: 24px; }
   .materials-body { font-size: 16px; font-weight: 300; line-height: 1.9; color: #444441; margin-bottom: 32px; }
   .materials-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--sand); }
   .stat-num { font-family: var(--font-display); font-size: 36px; font-weight: 600; color: var(--deep-ocean); margin-bottom: 4px; }
@@ -133,8 +137,8 @@
 
   /* BRANDING */
   .branding { padding: 80px; background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  /* branding.jpg goes here */
   .branding img { width: 100%; display: block; }
-  .branding-copy .section-title { margin-bottom: 24px; }
   .branding-body { font-size: 16px; font-weight: 300; line-height: 1.9; color: #444441; }
 
   /* ACCESSORIES */
@@ -142,6 +146,7 @@
   .accessories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
   .accessory-card { background: white; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
   .accessory-card:hover { transform: translateY(-4px); }
+  /* hat.jpg, belt.jpg, sunglass-strap.jpg go here */
   .accessory-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
   .accessory-card-body { padding: 20px 24px 24px; }
   .accessory-name { font-family: var(--font-condensed); font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; }
@@ -152,7 +157,7 @@
   .newsletter { background: var(--deep-ocean); padding: 80px; text-align: center; }
   .newsletter-title { font-family: var(--font-display); font-size: 40px; font-weight: 400; font-style: italic; color: var(--bleached); margin-bottom: 16px; }
   .newsletter-sub { font-size: 15px; font-weight: 300; color: var(--sea-mist); margin-bottom: 40px; }
-  .newsletter-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto; }
+  .newsletter-form { display: flex; max-width: 480px; margin: 0 auto; }
   .newsletter-input { flex: 1; padding: 16px 20px; border: 1px solid rgba(133,183,235,0.3); background: rgba(255,255,255,0.07); color: white; font-family: var(--font-body); font-size: 14px; outline: none; }
   .newsletter-input::placeholder { color: var(--sea-mist); opacity: 0.6; }
   .newsletter-btn { padding: 16px 32px; background: var(--bleached); color: var(--deep-ocean); border: none; font-family: var(--font-condensed); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
@@ -162,15 +167,15 @@
   footer { background: var(--dark); padding: 64px 80px 32px; }
   .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
   .footer-brand-name { font-family: var(--font-condensed); font-size: 20px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--bleached); margin-bottom: 12px; }
-  .footer-tagline { font-size: 13px; font-weight: 300; font-style: italic; color: var(--driftwood); line-height: 1.7; margin-bottom: 24px; }
+  .footer-tagline-text { font-size: 13px; font-weight: 300; font-style: italic; color: var(--driftwood); line-height: 1.7; margin-bottom: 24px; }
   .footer-col-title { font-family: var(--font-condensed); font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--bleached); margin-bottom: 16px; }
   .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .footer-links a { font-size: 13px; font-weight: 300; color: var(--driftwood); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--bleached); }
-  .footer-bottom { border-top: 1px solid #444441; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom { border-top: 1px solid #444441; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
   .footer-copy { font-size: 12px; font-weight: 300; color: #5F5E5A; font-family: var(--font-condensed); letter-spacing: 0.1em; }
-  .footer-tagline-strip { display: flex; gap: 24px; }
-  .footer-tagline-item { font-family: var(--font-condensed); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #5F5E5A; }
+  .footer-strip { display: flex; gap: 24px; }
+  .footer-strip-item { font-family: var(--font-condensed); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #5F5E5A; }
 </style>
 </head>
 <body>
@@ -181,9 +186,9 @@
     <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="1" y="1" width="26" height="26" rx="2" stroke="#0C3B6E" stroke-width="1.5"/>
       <path d="M8 14 L14 6 L20 14 L14 22 Z" stroke="#0C3B6E" stroke-width="1.5" fill="none"/>
-      <text x="14" y="17" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="7" font-weight="600" fill="#0C3B6E">C</text>
+      <text x="14" y="17" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="7" font-weight="600" fill="#0C3B6E">HT</text>
     </svg>
-    <span class="nav-brand">Coastal</span>
+    <span class="nav-brand">High Tide</span>
   </a>
   <ul class="nav-links">
     <li><a href="#collection">Shop</a></li>
@@ -195,6 +200,7 @@
 </nav>
 
 <!-- HERO -->
+<!-- hero.jpg: full right-side panel background image -->
 <section class="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Cape Cod, Massachusetts — Est. 2025</p>
@@ -206,7 +212,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="hero.jpg" alt="Man in Coastal henley leaning against a Jeep on Cape Cod">
+    <img src="hero.jpg" alt="Man in High Tide henley leaning against a Jeep on Cape Cod">
   </div>
 </section>
 
@@ -227,6 +233,7 @@
 </div>
 
 <!-- HERO PRODUCT -->
+<!-- henley-ss.jpg: large feature image on the left -->
 <section class="hero-product" id="hero-product">
   <p class="section-label">The Signature Piece</p>
   <div class="hero-product-grid">
@@ -250,6 +257,21 @@
 </section>
 
 <!-- FULL COLLECTION -->
+<!--
+  Product images used here (one per card):
+  henley-ss.jpg        — Reversible Henley SS
+  henley-ls.jpg        — Reversible Henley LS
+  graphic-tee.jpg      — Graphic Tee
+  crewneck-sweatshirt.jpg — Crew Neck Sweatshirt
+  crewneck.jpg         — Reversible Crewneck Sweater
+  quarter-zip.jpg      — Quarter Zip
+  fisherman-jacket.jpg — Fisherman Jacket
+  linen-pants.jpg      — Linen Pants
+  shorts.jpg           — Shorts
+  hat.jpg              — Rope-Brim Hat
+  belt.jpg             — Needlepoint Belt
+  sunglass-strap.jpg   — Sunglass Strap
+-->
 <section class="collection" id="collection">
   <div class="collection-header">
     <div>
@@ -257,10 +279,10 @@
       <h2 class="section-title" style="font-size:36px; margin-bottom:0;">Everything you need for the Cape.</h2>
     </div>
     <div class="collection-filters">
-      <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
-      <button class="filter-btn" onclick="filterProducts('tops', this)">Tops</button>
-      <button class="filter-btn" onclick="filterProducts('bottoms', this)">Bottoms</button>
-      <button class="filter-btn" onclick="filterProducts('accessories', this)">Accessories</button>
+      <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('tops',this)">Tops</button>
+      <button class="filter-btn" onclick="filterProducts('bottoms',this)">Bottoms</button>
+      <button class="filter-btn" onclick="filterProducts('accessories',this)">Accessories</button>
     </div>
   </div>
   <div class="product-grid" id="product-grid">
@@ -433,7 +455,8 @@
   </div>
 </section>
 
-<!-- THE FLIP SECTION -->
+<!-- THE FLIP -->
+<!-- henley-ss.jpg = Side A, henley-ls.jpg = Side B -->
 <section class="flip-section" id="flip">
   <div>
     <p class="flip-eyebrow">The Story Behind the Shirt</p>
@@ -444,21 +467,22 @@
   <div class="flip-visual">
     <div class="flip-side">
       <div class="flip-side-label">Side A</div>
-      <img src="henley-ss.jpg" alt="Side A — Harbor Blue">
+      <img src="henley-ss.jpg" alt="Side A — Harbor Blue with white stripes">
       <div class="flip-side-desc">Harbor Blue / White Stripe</div>
     </div>
     <div class="flip-side">
       <div class="flip-side-label">Side B — flip it</div>
-      <img src="henley-ls.jpg" alt="Side B — Bleached White">
+      <img src="henley-ls.jpg" alt="Side B — Bleached White with navy stripes">
       <div class="flip-side-desc">Bleached White / Navy Stripe</div>
     </div>
   </div>
 </section>
 
 <!-- MATERIALS -->
+<!-- materials.jpg: full-width image on the left side -->
 <section class="materials" id="materials">
-  <img src="materials.jpg" alt="Materials and color palette details">
-  <div class="materials-copy">
+  <img src="materials.jpg" alt="High Tide materials and color palette details">
+  <div>
     <p class="section-label">Built to Last</p>
     <h2 class="section-title">Premium materials.<br>Weathered feel.</h2>
     <p class="materials-body">Every piece is made from premium cotton with ribbed finishes and a washed, lived-in feel. Garment washed for that broken-in texture from day one. Subtle embroidered branding — nothing loud, nothing cheap.</p>
@@ -472,16 +496,18 @@
 </section>
 
 <!-- BRANDING -->
+<!-- branding.jpg: full-width image on the right side -->
 <section class="branding">
-  <div class="branding-copy">
+  <div>
     <p class="section-label">The Details</p>
     <h2 class="section-title">Subtle branding.<br>Built to last.</h2>
-    <p class="branding-body">The diamond C logo is embroidered on every piece — never printed, never loud. Woven labels on the inside. Rope detail on the hat. Toggle closures on the jacket. Every detail earns its place.</p>
+    <p class="branding-body">The diamond logo is embroidered on every piece — never printed, never loud. Woven labels on the inside. Rope detail on the hat. Toggle closures on the jacket. Every detail earns its place.</p>
   </div>
-  <img src="branding.jpg" alt="Coastal branding details — label and embroidery">
+  <img src="branding.jpg" alt="High Tide branding details — label and embroidery">
 </section>
 
 <!-- ACCESSORIES -->
+<!-- hat.jpg, belt.jpg, sunglass-strap.jpg: one per card -->
 <section class="accessories" id="accessories">
   <p class="section-label">Complete the Look</p>
   <h2 class="section-title" style="font-size:36px;">Accessories</h2>
@@ -527,8 +553,8 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-brand-name">Coastal</div>
-      <div class="footer-tagline">"Two sides to every shore.<br>Built for both sides of the day."<br><br>Cape Cod, Massachusetts — Est. 2025</div>
+      <div class="footer-brand-name">High Tide</div>
+      <div class="footer-tagline-text">"Two sides to every shore.<br>Built for both sides of the day."<br><br>Cape Cod, Massachusetts — Est. 2025</div>
     </div>
     <div>
       <div class="footer-col-title">Shop</div>
@@ -559,13 +585,13 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Coastal. Cape Cod, Massachusetts.</div>
-    <div class="footer-tagline-strip">
-      <span class="footer-tagline-item">Two sides to every shore</span>
-      <span class="footer-tagline-item">·</span>
-      <span class="footer-tagline-item">Built for both sides of the day</span>
-      <span class="footer-tagline-item">·</span>
-      <span class="footer-tagline-item">Pack light. Live full.</span>
+    <div class="footer-copy">© 2025 High Tide. Cape Cod, Massachusetts.</div>
+    <div class="footer-strip">
+      <span class="footer-strip-item">Two sides to every shore</span>
+      <span class="footer-strip-item">·</span>
+      <span class="footer-strip-item">Built for both sides of the day</span>
+      <span class="footer-strip-item">·</span>
+      <span class="footer-strip-item">Pack light. Live full.</span>
     </div>
   </div>
 </footer>
@@ -575,11 +601,7 @@
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('.product-card').forEach(card => {
-      if (category === 'all' || card.dataset.category === category) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+      card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
     });
   }
   document.querySelectorAll('.swatch').forEach(swatch => {
