@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coastal — Cape Cod, Massachusetts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --deep-ocean: #0C3B6E;
+    --harbor-blue: #378ADD;
+    --sea-mist: #85B7EB;
+    --salt-wash: #E6F1FB;
+    --bleached: #F5F3EE;
+    --driftwood: #888780;
+    --sand: #D3D1C7;
+    --dark: #2C2C2A;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Barlow', sans-serif;
+    --font-condensed: 'Barlow Condensed', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bleached);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(245,243,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(12,59,110,0.1);
+  }
+
+  .nav-logo {
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
+  }
+  .nav-logo-mark {
+    width: 32px; height: 32px;
+  }
+  .nav-brand {
+    font-family: var(--font-condensed);
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--deep-ocean);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--font-condensed);
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--deep-ocean); }
+
+  .nav-actions {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .nav-cart {
+    font-family: var(--font-condensed);
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--deep-ocean);
+    text-decoration: none;
+    border: 1px solid var(--deep-ocean);
+    padding: 7px 18px;
+    transition: all 0.2s;
+  }
+  .nav-cart:hover { background: var(--deep-ocean); color: white; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--deep-ocean);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 64px 80px 80px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-condensed);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--sea-mist);
+    margin-bottom: 24px;
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--bleached);
+    margin-bottom: 28px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--sea-mist);
+  }
+
+  .hero-sub {
+    font-size: 16px; font-weight: 300;
+    line-height: 1.7;
+    color: var(--sea-mist);
+    margin-bottom: 48px;
+    max-width: 380px;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--font-condensed);
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--deep-ocean);
+    background: var(--bleached);
+    border: none;
+    padding: 16px 36px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: white; transform: translateY(-1px); }
+
+  .btn-secondary {
+    font-family: var(--font-condensed);
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bleached);
+    background: transparent;
+    border: 1px solid rgba(245,243,238,0.4);
+    padding: 16px 36px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--bleached); }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+  }
+  .hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 100%; min-height: 600px;
+    background: linear-gradient(135deg, #0a2d54 0%, #1a4f82 50%, #0C3B6E 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-condensed);
+    font-size: 13px; letter-spacing: 0.2em;
+    color: var(--sea-mist); text-transform: uppercase;
+  }
+
+  /* Decorative wave lines */
+  .hero-waves {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, var(--sea-mist) 0px, var(--sea-mist) 40px, transparent 40px, transparent 60px);
+    opacity: 0.3;
+  }
+
+  /* TAGLINE STRIP */
+  .tagline-strip {
+    background: var(--deep-ocean);
+    padding: 16px 0;
+    overflow: hidden;
+  }
+  .tagline-inner {
+    display: flex; gap: 80px;
+    animation: marquee 24s linear infinite;
+    white-space: nowrap;
+  }
+  .tagline-item {
+    font-family: var(--font-condensed);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--sea-mist);
+    display: flex; align-items: center; gap: 20px;
+    flex-shrink: 0;
+  }
+  .tagline-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--sea-mist); opacity: 0.5; }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* HERO PRODUCT SECTION */
+  .hero-product {
+    padding: 120px 80px;
+    background: var(--bleached);
+  }
+
+  .section-label {
+    font-family: var(--font-condensed);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--driftwood);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    color: var(--deep-ocean);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .hero-product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 64px;
+  }
+
+  .product-feature-img {
+    background: var(--salt-wash);
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-condensed);
+    font-size: 12px; letter-spacing: 0.2em;
+    color: var(--harbor-blue); text-transform: uppercase;
+    position: relative; overflow: hidden;
+  }
+
+  .reversible-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--deep-ocean);
+    color: var(--bleached);
+    font-family: var(--font-condensed);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 6px 14px;
+  }
+
+  .product-feature-copy { }
+
+  .product-feature-copy .section-label { margin-bottom: 8px; }
+
+  .product-feature-name {
+    font-family: var(--font-display);
+    font-size: 36px; font-weight: 600;
+    color: var(--deep-ocean);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .product-feature-desc {
+    font-size: 16px; font-weight: 300;
+    line-height: 1.8;
+    color: #444441;
+    margin-bottom: 32px;
+  }
+
+  .product-feature-price {
+    font-family: var(--font-condensed);
+    font-size: 28px; font-weight: 600;
+    color: var(--deep-ocean);
+    margin-bottom: 32px;
+  }
+
+  .color-swatches {
+    display: flex; gap: 10px; margin-bottom: 32px; align-items: center;
+  }
+  .swatch {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer; transition: border-color 0.2s;
+  }
+  .swatch.active { border-color: var(--deep-ocean); }
+  .swatch-label { font-size: 12px; color: var(--driftwood); margin-left: 8px; font-family: var(--font-condensed); letter-spacing: 0.1em; }
+
+  /* PRODUCT GRID */
+  .collection {
+    padding: 80px;
+    background: white;
+  }
+
+  .collection-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px;
+  }
+
+  .collection-filters {
+    display: flex; gap: 8px;
+  }
+  .filter-btn {
+    font-family: var(--font-condensed);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 8px 20px;
+    border: 1px solid var(--sand);
+    background: transparent;
+    color: var(--driftwood);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--deep-ocean);
+    border-color: var(--deep-ocean);
+    color: white;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+  }
+
+  .product-card {
+    cursor: pointer;
+  }
+
+  .product-card-img {
+    background: var(--bleached);
+    aspect-ratio: 3/4;
+    margin-bottom: 16px;
+    overflow: hidden;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .product-card-img-placeholder {
+    font-family: var(--font-condensed);
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--driftwood); text-transform: uppercase;
+    text-align: center; padding: 20px;
+  }
+
+  .product-card:hover .product-card-img { opacity: 0.9; }
+
+  .new-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--deep-ocean); color: white;
+    font-family: var(--font-condensed);
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 4px 10px;
+  }
+
+  .hero-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--harbor-blue); color: white;
+    font-family: var(--font-condensed);
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 4px 10px;
+  }
+
+  .product-card-swatches {
+    display: flex; gap: 6px; margin-bottom: 8px;
+  }
+  .mini-swatch {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .product-card-name {
+    font-family: var(--font-condensed);
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .product-card-desc {
+    font-size: 13px; font-weight: 300;
+    color: var(--driftwood);
+    margin-bottom: 8px;
+  }
+
+  .product-card-price {
+    font-family: var(--font-condensed);
+    font-size: 16px; font-weight: 600;
+    color: var(--deep-ocean);
+  }
+
+  /* THE FLIP SECTION */
+  .flip-section {
+    background: var(--deep-ocean);
+    padding: 120px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .flip-copy { }
+
+  .flip-eyebrow {
+    font-family: var(--font-condensed);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--sea-mist);
+    margin-bottom: 20px;
+  }
+
+  .flip-headline {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 4vw, 60px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--bleached);
+    margin-bottom: 28px;
+  }
+
+  .flip-headline em { font-style: italic; color: var(--sea-mist); }
+
+  .flip-body {
+    font-size: 16px; font-weight: 300;
+    line-height: 1.8; color: var(--sea-mist);
+    margin-bottom: 40px;
+  }
+
+  .flip-visual {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .flip-side {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(133,183,235,0.2);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .flip-side-label {
+    font-family: var(--font-condensed);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--sea-mist);
+    margin-bottom: 16px;
+  }
+
+  .flip-side-img {
+    background: rgba(255,255,255,0.05);
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-family: var(--font-condensed);
+    font-size: 11px; letter-spacing: 0.15em;
+    color: rgba(133,183,235,0.6); text-transform: uppercase;
+  }
+
+  .flip-side-desc {
+    font-size: 12px; font-weight: 300;
+    color: rgba(133,183,235,0.7);
+    line-height: 1.6;
+  }
+
+  .flip-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--sea-mist); font-size: 28px;
+    align-self: center;
+  }
+
+  /* LIFESTYLE / ABOUT */
+  .lifestyle {
+    padding: 120px 80px;
+    background: var(--bleached);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .lifestyle-imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    height: 500px;
+  }
+
+  .lifestyle-img {
+    background: var(--salt-wash);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-condensed);
+    font-size: 10px; letter-spacing: 0.2em;
+    color: var(--harbor-blue); text-transform: uppercase;
+  }
+  .lifestyle-img:first-child {
+    grid-row: span 2;
+  }
+
+  .lifestyle-copy { }
+
+  .lifestyle-copy .section-title { margin-bottom: 24px; }
+
+  .lifestyle-body {
+    font-size: 16px; font-weight: 300;
+    line-height: 1.9; color: #444441;
+    margin-bottom: 32px;
+  }
+
+  .lifestyle-stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px; margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--sand);
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px; font-weight: 600;
+    color: var(--deep-ocean);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-family: var(--font-condensed);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--driftwood);
+  }
+
+  /* ACCESSORIES ROW */
+  .accessories {
+    padding: 80px;
+    background: white;
+  }
+  .accessories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .accessory-card {
+    background: var(--bleached);
+    padding: 40px 32px;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; gap: 16px;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  .accessory-card:hover { transform: translateY(-4px); }
+  .accessory-icon {
+    width: 80px; height: 80px;
+    background: var(--salt-wash);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+  }
+  .accessory-name {
+    font-family: var(--font-condensed);
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dark);
+  }
+  .accessory-desc { font-size: 13px; font-weight: 300; color: var(--driftwood); line-height: 1.6; }
+  .accessory-price {
+    font-family: var(--font-condensed);
+    font-size: 16px; font-weight: 600;
+    color: var(--deep-ocean);
+  }
+
+  /* NEWSLETTER */
+  .newsletter {
+    background: var(--deep-ocean);
+    padding: 80px;
+    text-align: center;
+  }
+  .newsletter-title {
+    font-family: var(--font-display);
+    font-size: 40px; font-weight: 400;
+    font-style: italic;
+    color: var(--bleached);
+    margin-bottom: 16px;
+  }
+  .newsletter-sub {
+    font-size: 15px; font-weight: 300;
+    color: var(--sea-mist);
+    margin-bottom: 40px;
+  }
+  .newsletter-form {
+    display: flex; gap: 0; max-width: 480px; margin: 0 auto;
+  }
+  .newsletter-input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 1px solid rgba(133,183,235,0.3);
+    background: rgba(255,255,255,0.07);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+  }
+  .newsletter-input::placeholder { color: var(--sea-mist); opacity: 0.6; }
+  .newsletter-btn {
+    padding: 16px 32px;
+    background: var(--bleached);
+    color: var(--deep-ocean);
+    border: none;
+    font-family: var(--font-condensed);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .newsletter-btn:hover { background: white; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 64px 80px 32px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand-name {
+    font-family: var(--font-condensed);
+    font-size: 20px; font-weight: 600;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--bleached);
+    margin-bottom: 12px;
+  }
+  .footer-tagline {
+    font-size: 13px; font-weight: 300;
+    font-style: italic;
+    color: var(--driftwood);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .footer-col-title {
+    font-family: var(--font-condensed);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--bleached);
+    margin-bottom: 16px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    font-size: 13px; font-weight: 300;
+    color: var(--driftwood);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--bleached); }
+  .footer-bottom {
+    border-top: 1px solid #444441;
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy {
+    font-size: 12px; font-weight: 300;
+    color: #5F5E5A;
+    font-family: var(--font-condensed);
+    letter-spacing: 0.1em;
+  }
+  .footer-tagline-strip {
+    display: flex; gap: 32px;
+  }
+  .footer-tagline-item {
+    font-family: var(--font-condensed);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #5F5E5A;
+  }
+
+  /* LOGO SVG */
+  .logo-svg { width: 36px; height: 36px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg class="logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="3" width="30" height="30" rx="2" fill="none" stroke="#0C3B6E" stroke-width="1.5"/>
+      <path d="M10 18 L18 8 L26 18 L18 28 Z" fill="none" stroke="#0C3B6E" stroke-width="1.5"/>
+      <text x="18" y="21" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" font-weight="600" fill="#0C3B6E" letter-spacing="0.5">C</text>
+    </svg>
+    <span class="nav-brand">Coastal</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#collection">Shop</a></li>
+    <li><a href="#flip">The Flip</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#accessories">Accessories</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#" class="nav-cart">Cart (0)</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Cape Cod, Massachusetts — Est. 2025</p>
+    <h1 class="hero-headline">Spill happens.<br><em>Flip it.</em></h1>
+    <p class="hero-sub">Two sides to every shore. Built for both sides of the day.</p>
+    <div class="hero-ctas">
+      <a href="#collection" class="btn-primary">Shop the Collection</a>
+      <a href="#flip" class="btn-secondary">The Flip Story</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      [ Lifestyle hero shot — man, Jeep, Cape Cod dunes ]
+    </div>
+  </div>
+  <div class="hero-waves"></div>
+</section>
+
+<!-- TAGLINE STRIP -->
+<div class="tagline-strip">
+  <div class="tagline-inner">
+    <span class="tagline-item">Two sides to every shore <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Built for both sides of the day <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Pack light. Live full. <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Cape Cod, Massachusetts <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Night's not over. Flip it. <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Two sides to every shore <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Built for both sides of the day <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Pack light. Live full. <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Cape Cod, Massachusetts <span class="tagline-dot"></span></span>
+    <span class="tagline-item">Night's not over. Flip it. <span class="tagline-dot"></span></span>
+  </div>
+</div>
+
+<!-- HERO PRODUCT -->
+<section class="hero-product" id="hero-product">
+  <p class="section-label">The Signature Piece</p>
+  <div class="hero-product-grid">
+    <div class="product-feature-img">
+      <div class="reversible-badge">Reversible</div>
+      [ Reversible Henley — both sides shown ]
+    </div>
+    <div class="product-feature-copy">
+      <p class="section-label">Short Sleeve — Lightweight</p>
+      <h2 class="product-feature-name">Reversible Henley</h2>
+      <p class="product-feature-desc">Lightweight cotton. Two looks in one. Built for long days and even longer nights. Side A is harbor blue with white stripes. Flip it — Side B is bleached white with navy stripes.</p>
+      <div class="color-swatches">
+        <div class="swatch active" style="background:#0C3B6E;" title="Harbor Blue"></div>
+        <div class="swatch" style="background:#F5F3EE; border-color:#D3D1C7;" title="Bleached White"></div>
+        <span class="swatch-label">Harbor Blue / Bleached White</span>
+      </div>
+      <div class="product-feature-price">$72</div>
+      <a href="#" class="btn-primary" style="background:var(--deep-ocean); color:var(--bleached);">Add to Cart</a>
+    </div>
+  </div>
+</section>
+
+<!-- FULL COLLECTION -->
+<section class="collection" id="collection">
+  <div class="collection-header">
+    <div>
+      <p class="section-label">Full Collection</p>
+      <h2 class="section-title" style="font-size:36px; margin-bottom:0;">Everything you need for the Cape.</h2>
+    </div>
+    <div class="collection-filters">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Tops</button>
+      <button class="filter-btn">Bottoms</button>
+      <button class="filter-btn">Accessories</button>
+    </div>
+  </div>
+
+  <div class="product-grid">
+    <!-- Reversible Henley SS -->
+    <div class="product-card">
+      <div class="product-card-img" style="background:#E6F1FB;">
+        <span class="hero-badge">Hero</span>
+        <div class="product-card-img-placeholder">Reversible Henley<br>Short Sleeve</div>
+      </div>
+      <div class="product-card-swatches">
+        <div class="mini-swatch" style="background:#0C3B6E;"></div>
+        <div class="mini-swatch" style="background:#F5F3EE; border-color:#ccc;"></div>
+      </div>
+      <div class="product-card-name">Reversible Henley — SS</div>
+      <div class="product-card-desc">Lightweight cotton. Two looks.</div>
+      <div class="product-card-price">$72</div>
+    </div>
+
+    <!-- Reversible Henley LS -->
+    <div class="product-card">
+      <div class="product-card-img" style="background:#E6F1FB;">
+        <span class="hero-badge">Hero</span>
+        <div class="product-card-img-placeholder">Reversible Henley<br>Long Sleeve</div>
+      </div>
+      <div class="product-card-swatches">
+        <div class="mini-swatch" style="background:#0C3B6E;"></div>
+        <div class="mini-swatch" style="background:#F5F3EE; border-color:#ccc;"></div>
+      </div>
+      <div class="product-card-name">Reversible Henley — LS</div>
+      <div class="product-card-desc">Heavyweight. Cooler coastal nights.</div>
+      <div class="product-card-price">$98</div>
+    </div>
+
+    <!-- Graphic Tee -->
+    <div class="product-card">
+      <div class="product-card-img" style="background:#F5F3EE;">
+        <span class="new-badge">New</span>
+        <div class="product-card-img-placeholder">Graphic Tee<br>Surfboard / Jeep</div>
+      </div>
+      <div class="product-card-swatches">
+        <div class="mini-swatch" style="background:#D3D1C7;"></div>
+        <div class="mini-swatch" style="background:#0C3B6E;"></div>
+        <div class="mini-swatch" style="background:#888780;"></div>
+      </div>
+      <div class="product-card-name">Graphic Tee</div>
+      <div class="product-card-desc">Washed cotton. Beach to bar.</div>
+      <div class="product-card-price">$48</div>
+    </div>
+
+    <!-- Crew Neck -->
+    <div class="product-card">
+      <div class="product-card-img" style="background:#E6F1FB;">
+        <div class="product-card-img-placeholder">Crew Neck<br>Sweatshirt</div>
+      </div>
+      <div class="product-card-swatches">
+        <div class="mini-swatch" style="background:#0C3B6E;"></div>
+        <div class="mini-swatch" style="background:#888780;"></div>
+        <div class="mini-swatch" style="background:#F5F3EE; border-color:#ccc;"></div>
+      </div>
+      <div class="product-card-name">Crew Neck</div>
+      <div class="product-card-desc">Midweight fleece. Brushed interior.</div>
+      <div class="product-card-price">$88</div>
+    </div>
+
+    <!-- Quarter Zip -->
+    <div class="product-card">
+      <div class="product-card-img" style="background:#E6F1FB;">
+        <div class="product-card-img-placeholder">Quarter Zip</div>
+      </div>
+      <div class="product-card-swatches">
+        <div class="mini-swatch" style="background:#0C3B6E;"></div>
+        <div class="mini-swatch" style="background:#888780;"></div>
+      </div>
+      <div class="product-card-name">Quarter Zip</div>
+      <div class="product-card-desc">Metal zipper. Layer it. Live in it.</div>
+      <div class="product-card-price">$118</div>
+    </div>
+
+    <!-- Linen Pants -->
+    <div class="product-card">
+      <div class="product-card-img" style="background:#F5F3EE;">
+        <div class="product-card-img-placeholder">Linen Pants</div>
+      </div>
+      <div class="product-card-swatches">
+        <div class="mini-swatch" style="background:#D3D1C7;"></div>
+        <div class="mini-swatch" style="background:#888780;"></div>
+        <div class="mini-swatch" style="background:#0C3B6E;"></div>
+      </div>
+      <div class="product-card-name">Linen Pants</div>
+      <div class="product-card-desc">Easy, coastal, timeless.</div>
+      <div class="product-card-price">$98</div>
+    </div>
+
+    <!-- Shorts -->
+    <div class="product-card">
+      <div class="product-card-img" style="background:#F5F3EE;">
+        <div class="product-card-img-placeholder">Shorts<br>7" Inseam</div>
+      </div>
+      <div class="product-card-swatches">
+        <div class="mini-swatch" style="background:#378ADD;"></div>
+        <div class="mini-swatch" style="background:#F5F3EE; border-color:#ccc;"></div>
+        <div class="mini-swatch" style="background:#888780;"></div>
+      </div>
+      <div class="product-card-name">Shorts</div>
+      <div class="product-card-desc">Chino-style. 7" inseam. Clean fit.</div>
+      <div class="product-card-price">$64</div>
+    </div>
+
+    <!-- Rope-Brim Hat -->
+    <div class="product-card">
+      <div class="product-card-img" style="background:#F5F3EE;">
+        <div class="product-card-img-placeholder">Rope-Brim Hat</div>
+      </div>
+      <div class="product-card-swatches">
+        <div class="mini-swatch" style="background:#0C3B6E;"></div>
+        <div class="mini-swatch" style="background:#D3D1C7;"></div>
+      </div>
+      <div class="product-card-name">Rope-Brim Hat</div>
+      <div class="product-card-desc">Canvas. Rope detail. One size.</div>
+      <div class="product-card-price">$38</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE FLIP SECTION -->
+<section class="flip-section" id="flip">
+  <div class="flip-copy">
+    <p class="flip-eyebrow">The Story Behind the Shirt</p>
+    <h2 class="flip-headline">Night's not over.<br><em>Flip it.</em></h2>
+    <p class="flip-body">You're out at a bar on the Cape. Something spills. Most guys call it a night. You just flip your henley inside out — and you're back. Harbor blue to bleached white. Clean, confident, no big deal. That's the whole idea.</p>
+    <a href="#collection" class="btn-primary">Shop the Henley</a>
+  </div>
+  <div>
+    <div class="flip-visual">
+      <div class="flip-side">
+        <div class="flip-side-label">Side A</div>
+        <div class="flip-side-img">[ Harbor blue<br>white stripes ]</div>
+        <div class="flip-side-desc">Harbor Blue / White Stripe</div>
+      </div>
+      <div class="flip-side">
+        <div class="flip-side-label">Side B — flip it</div>
+        <div class="flip-side-img">[ Bleached white<br>navy stripes ]</div>
+        <div class="flip-side-desc">Bleached White / Navy Stripe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE / ABOUT -->
+<section class="lifestyle" id="about">
+  <div class="lifestyle-imgs">
+    <div class="lifestyle-img">[ Jeep on dunes ]</div>
+    <div class="lifestyle-img">[ Harbor at golden hour ]</div>
+    <div class="lifestyle-img">[ Bar scene at night ]</div>
+  </div>
+  <div class="lifestyle-copy">
+    <p class="section-label">Cape Cod, Massachusetts</p>
+    <h2 class="section-title">Built for the Cape.<br>Ready for the night.</h2>
+    <p class="lifestyle-body">This isn't preppy nautical. It's the real thing — clothes built for guys who actually spend time on the water and stay out after. Weathered, lived-in, and smart enough to pull double duty without trying too hard.</p>
+    <a href="#collection" class="btn-primary" style="background:var(--deep-ocean); color:var(--bleached);">Shop Now</a>
+    <div class="lifestyle-stats">
+      <div>
+        <div class="stat-num">7</div>
+        <div class="stat-label">Pieces</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Sides</div>
+      </div>
+      <div>
+        <div class="stat-num">1</div>
+        <div class="stat-label">Weekend wardrobe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESSORIES -->
+<section class="accessories" id="accessories">
+  <p class="section-label">Complete the Look</p>
+  <h2 class="section-title" style="font-size:36px;">Accessories</h2>
+  <div class="accessories-grid">
+    <div class="accessory-card">
+      <div class="accessory-icon">🧢</div>
+      <div class="accessory-name">Rope-Brim Hat</div>
+      <div class="accessory-desc">Canvas or washed cotton. Rope brim detail. Embroidered diamond logo.</div>
+      <div class="accessory-price">$38</div>
+    </div>
+    <div class="accessory-card">
+      <div class="accessory-icon">🟦</div>
+      <div class="accessory-name">Needlepoint Belt</div>
+      <div class="accessory-desc">Needlepoint canvas. Full grain leather tabs. Brass buckle. Made to last.</div>
+      <div class="accessory-price">$118</div>
+    </div>
+    <div class="accessory-card">
+      <div class="accessory-icon">🕶️</div>
+      <div class="accessory-name">Sunglass Strap</div>
+      <div class="accessory-desc">Needlepoint + padded backing. Leather end tabs. Keep your shades secure.</div>
+      <div class="accessory-price">$28</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2 class="newsletter-title">Stay in the water.</h2>
+  <p class="newsletter-sub">New drops, Cape Cod dispatches, and the occasional spill story.</p>
+  <div class="newsletter-form">
+    <input type="email" class="newsletter-input" placeholder="Your email">
+    <button class="newsletter-btn">Sign Up</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Coastal</div>
+      <div class="footer-tagline">"Two sides to every shore.<br>Built for both sides of the day."<br><br>Cape Cod, Massachusetts — Est. 2025</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Shop</div>
+      <ul class="footer-links">
+        <li><a href="#">Tops</a></li>
+        <li><a href="#">Bottoms</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">All Products</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">The Flip</a></li>
+        <li><a href="#">Materials</a></li>
+        <li><a href="#">Find a Store</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Help</div>
+      <ul class="footer-links">
+        <li><a href="#">Sizing Guide</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Coastal. Cape Cod, Massachusetts.</div>
+    <div class="footer-tagline-strip">
+      <span class="footer-tagline-item">Two sides to every shore</span>
+      <span class="footer-tagline-item">·</span>
+      <span class="footer-tagline-item">Built for both sides of the day</span>
+      <span class="footer-tagline-item">·</span>
+      <span class="footer-tagline-item">Pack light. Live full.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.swatch').forEach(swatch => {
+    swatch.addEventListener('click', function() {
+      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
